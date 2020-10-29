@@ -13,6 +13,7 @@ namespace Merlin.Commands
         private IActor actor;
         private int dx, locationNumber, step;
         private int safePositionX, safePositionY;
+        private int jumpHigh = 30;
 
         public Jump(IActor movable, int step, int dx, int locationNumber )
         {
@@ -45,7 +46,7 @@ namespace Merlin.Commands
         {
             if (locationNumber == 0)
             {
-                actor.SetPosition(safePositionX, safePositionY - 40);
+                actor.SetPosition(safePositionX, safePositionY - jumpHigh);
                 if (Collision())
                 {
                     actor.SetPosition(safePositionX, safePositionY);
@@ -57,7 +58,7 @@ namespace Merlin.Commands
            
             if (locationNumber == 1) 
             {
-                actor.SetPosition(safePositionX + dx + step * step, safePositionY - 40);
+                actor.SetPosition(safePositionX + dx + step * step, safePositionY - jumpHigh);
                 if (Collision())
                 {
                     actor.SetPosition(safePositionX, safePositionY);
@@ -69,7 +70,7 @@ namespace Merlin.Commands
 
             if (locationNumber == -1)
             {
-                actor.SetPosition(safePositionX - (dx + step * step), safePositionY - 40);
+                actor.SetPosition(safePositionX - (dx + step * step), safePositionY - jumpHigh);
 
                 if (Collision())
                 {

@@ -45,7 +45,6 @@ namespace Merlin.Actors
             UpdateAnimation();                  
         }
         
-
         public override void Update()
         {
              Toggle();           

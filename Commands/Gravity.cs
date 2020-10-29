@@ -35,8 +35,6 @@ namespace Merlin.Commands
             }
         }
         
-      
-
         public void SetWorld(IWorld world)
         {
             this.world = world;        

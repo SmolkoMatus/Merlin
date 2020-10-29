@@ -14,8 +14,9 @@ namespace Merlin.Actors
         Animation animation_MerlinWalking = new Animation("resources/player.png", 64, 58);
         Command moveLeft;
         Command moveRight;
-        Command moveUp;
+        //Command moveUp;
         Command moveDown;
+        int counterHop = 1;
        
         //int playerX;
         //int playerY;
@@ -38,28 +39,47 @@ namespace Merlin.Actors
             if (Input.GetInstance().IsKeyDown(Input.Key.LEFT) == true)
             {
                 animation_MerlinWalking.Start();
-                moveLeft.Execute();
+                if (Input.GetInstance().IsKeyDown(Input.Key.SPACE) == true)
+                {
+                    moveLeft.Execute();
+                    new Jump(this, 3, 10, -1).Execute();
+                }
+                else
+                {
+                    moveLeft.Execute();
+                }
             }
             else if (Input.GetInstance().IsKeyDown(Input.Key.RIGHT) == true)
             {
                 animation_MerlinWalking.Start();
-                moveRight.Execute();
+                if (Input.GetInstance().IsKeyPressed(Input.Key.SPACE) == true)
+                {
+                    moveRight.Execute();
+                    new Jump(this, 3, 10, 1).Execute();
+                }                
+                else
+                {
+                    moveRight.Execute();
+                }
             }
-            else if ((Input.GetInstance().IsKeyDown(Input.Key.UP) == true))
+           else if ((Input.GetInstance().IsKeyDown(Input.Key.SPACE) == true) )
             {
                 animation_MerlinWalking.Start();
                 new Jump(this, 3, 0, 0).Execute();
+                
             }
-            else if ((Input.GetInstance().IsKeyDown(Input.Key.UP) == true) && (Input.GetInstance().IsKeyDown(Input.Key.RIGHT) == true))
+           /* else if ((Input.GetInstance().IsKeyDown(Input.Key.D) == true) )
             {
                 animation_MerlinWalking.Start();
                 new Jump(this, 3, 10, 1).Execute();
+                moveLeft.Execute();
             }
-            else if ((Input.GetInstance().IsKeyDown(Input.Key.UP) == true) && (Input.GetInstance().IsKeyDown(Input.Key.LEFT) == true))
+            else if ((Input.GetInstance().IsKeyDown(Input.Key.A) == true) )
             {
                 animation_MerlinWalking.Start();
                 new Jump(this, 3, 10, -1).Execute();
-            }
+                moveRight.Execute();
+            }*/
             else if (Input.GetInstance().IsKeyDown(Input.Key.DOWN) == true)
             {
                 animation_MerlinWalking.Start();
@@ -69,6 +89,7 @@ namespace Merlin.Actors
             {
                 animation_MerlinWalking.Stop();
             }            
+
         }
 
         public int PlayerCoordinatX

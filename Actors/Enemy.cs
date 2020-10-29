@@ -64,16 +64,6 @@ namespace Merlin.Actors
         }
 
 
-        //Console.Write(positionPlayerX); Console.WriteLine("PlayerX");
-        //Console.Write(positionPlayerY); Console.WriteLine("PlayerY");
-
-        /*private void SetPlayer(IActor player)
-        {
-            positionPlayerX = player.PlayerCoordinatX;
-            positionPlayerY = player.PlayerCoordinatY; 
-            
-        }*/
-
         private int SeeNumber(int xP, int xE, int yP, int yE)
         {
             int finalNumber,dimenseFirst,dimenseSecond;

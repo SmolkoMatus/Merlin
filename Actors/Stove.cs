@@ -24,8 +24,7 @@ namespace Merlin.Actors
             animation_stove_cold.Start();
             SetAnimation(animation_stove_cold);
             SetPosition(200,285);
-           
-       
+                 
            
         }
         public void AddKettle(Kettle kettle)
