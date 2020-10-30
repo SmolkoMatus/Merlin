@@ -30,6 +30,10 @@ namespace Merlin
             IActor player = new Player();
             
             ((Stove)stove).AddKettle((Kettle)kettle);
+            stove.AddWood();
+            stove.AddWood();
+            stove.AddWood();
+            stove.RemoveWood();
             /*
             //Actor kettle = new Kettle(); ukazka na ten isty objekt 
             //Actor actor = kettle; ukazka na ten isty objekt 

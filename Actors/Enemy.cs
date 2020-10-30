@@ -28,8 +28,7 @@ namespace Merlin.Actors
             animationEnemy = new Animation("resources/enemy.png", 64, 58);
             SetAnimation(animationEnemy);
             animationEnemy.Start();
-            SetPosition(250, 120);
-            
+            SetPosition(250, 120);           
             //followPlayer = new Move(this, 1, , 0);
             this.player = player;
             //move = new Move(this,1,xEnemy,0);
@@ -41,7 +40,6 @@ namespace Merlin.Actors
             positionPlayerY = player.GetY();
             xEnemy = GetX();
             yEnemy = GetY();
-
 
             if ((SeeNumber(positionPlayerX, xEnemy, positionPlayerY, yEnemy) <= followNumber) && (counter % 30 == 0))
             {
@@ -63,7 +61,6 @@ namespace Merlin.Actors
             counter++;
         }
 
-
         private int SeeNumber(int xP, int xE, int yP, int yE)
         {
             int finalNumber,dimenseFirst,dimenseSecond;
@@ -79,7 +76,6 @@ namespace Merlin.Actors
             {
                 finalNumber = dimenseFirst;
             }
-
             return finalNumber;
         }
                   

@@ -89,9 +89,7 @@ namespace Merlin.Actors
             {
                 animation_MerlinWalking.Stop();
             }            
-
         }
-
         public int PlayerCoordinatX
         {
             get
@@ -107,11 +105,5 @@ namespace Merlin.Actors
                 return GetY(); 
             }
         }
-
-        /*public void SetEnemy(Enemy enemy)
-        {
-
-        }*/
     }
-
 }

@@ -26,9 +26,9 @@ namespace Merlin.Actors
             
         }     
 
-        public void DecreaseTemperature(int delta)
+        public void DecreaseTemperature()
         {
-            this.temperature += delta;
+            this.temperature =-1;
         }     
 
         public void IncreaseTemperature(int delta)
@@ -54,6 +54,7 @@ namespace Merlin.Actors
             if(counter % 120 == 0)
             {
                 IncreaseTemperature(-1);
+                
                 Console.Write("DecT");Console.WriteLine(temperature);
 
             if(GetTemperature() < 60 && 20 < GetTemperature())

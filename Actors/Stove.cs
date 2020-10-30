@@ -13,7 +13,7 @@ namespace Merlin.Actors
     public class Stove : AbstractActor
     {
         private int counter = 0;
-        private int counterLog = 1;
+        private int counterLog = 0;
         private Animation animation_stove_cold = new Animation("resources/stove_cold.png", 64, 34);
         private Animation animation_stove_hot = new Animation("resources/stove.png", 64, 34);
         private Kettle kettle = null;
