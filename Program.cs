@@ -49,8 +49,10 @@ namespace Merlin
             source.SetPosition(100, 150);
             Crystal crystal = new Crystal((PowerSource)source);
             crystal.SetPosition(100, 100);
-            CrackedCrystal crackedCrystal = new CrackedCrystal((PowerSource)source,100);
+
+            CrackedCrystal crackedCrystal = new CrackedCrystal((PowerSource)source);
             crackedCrystal.SetPosition(150,100);
+
             IActor enemy = new Enemy(player);
             enemy.SetPosition(250, 500);
             player.SetPhysics(true);
