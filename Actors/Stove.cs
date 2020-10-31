@@ -10,6 +10,7 @@ using System.ComponentModel;
 
 namespace Merlin.Actors
 {
+
     public class Stove : AbstractActor
     {
         private int counter = 0;
@@ -23,7 +24,7 @@ namespace Merlin.Actors
         {
             animation_stove_cold.Start();
             SetAnimation(animation_stove_cold);
-            SetPosition(200,285);
+          
                  
            
         }
@@ -57,12 +58,12 @@ namespace Merlin.Actors
             if(counterLog == 0)
             {     
                 SetAnimation(animation_stove_cold);
-                SetPosition(200, 285);
+        
             }
             else if(counterLog >= 1)
             {
                 SetAnimation(animation_stove_hot);
-                SetPosition(200, 285);
+              
                 animation_stove_hot.Start();
             }
             counter++;           

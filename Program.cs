@@ -23,24 +23,18 @@ namespace Merlin
             Gravity gravity = new Gravity(container.GetWorld());
             container.GetWorld().SetPhysics(gravity);
 
-
-
             Kettle kettle = new Kettle();
+            kettle.SetPosition(200, 240);
             Stove stove = new Stove();
+            stove.SetPosition(200, 285);
             IActor player = new Player();
-            
+            player.SetPosition(250, 200);
             ((Stove)stove).AddKettle((Kettle)kettle);
             stove.AddWood();
             stove.AddWood();
             stove.AddWood();
             stove.RemoveWood();
-            /*
-            //Actor kettle = new Kettle(); ukazka na ten isty objekt 
-            //Actor actor = kettle; ukazka na ten isty objekt 
-            //kettle.GetTemperature = 20;
-            //kettle.MyAwasomeMethod();
-            //((Kettle)actor).MyAwasomeMethod(); usseful advice :D 
-            */
+
             container.GetWorld().AddActor(kettle);
             container.GetWorld().AddActor(stove);
             container.GetWorld().AddActor(player);
@@ -52,10 +46,13 @@ namespace Merlin
             }*/          
           
             PowerSource source = new PowerSource();
+            source.SetPosition(100, 150);
             Crystal crystal = new Crystal((PowerSource)source);
-            CrackedCrystal crackedCrystal = new CrackedCrystal((PowerSource)source);
+            crystal.SetPosition(100, 100);
+            CrackedCrystal crackedCrystal = new CrackedCrystal((PowerSource)source,100);
+            crackedCrystal.SetPosition(150,100);
             IActor enemy = new Enemy(player);
-
+            enemy.SetPosition(250, 500);
             player.SetPhysics(true);
             enemy.SetPhysics(true);
 
@@ -63,17 +60,14 @@ namespace Merlin
             container.GetWorld().AddActor(source);
             container.GetWorld().AddActor(crystal);
             container.GetWorld().AddActor(enemy);
+
             //((IObservable)source).Subscribe((IObserver)crystal); - pre pridavani dalsieho observera na kontrolu 
-
-
-           // IActor actor;
-            List<IActor> actors = new List<IActor>();
-            
+  
+            List<IActor> actors = new List<IActor>();            
             actors.Add(source);
             actors.Add(crystal);
             actors.Add(kettle);
             actors.Add(stove);
-
             //actor = actors.Find(a => a.GetName()); //select single entry
             //Console.WriteLine(actor);
 
@@ -81,6 +75,7 @@ namespace Merlin
             {
                 Console.WriteLine(actor.GetType());
             }
+
 
             //run game with current settings
             container.Run();

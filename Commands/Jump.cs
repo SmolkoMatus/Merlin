@@ -7,13 +7,14 @@ using System.Text;
 
 namespace Merlin.Commands
 {
+
     public class Jump : Command
     {
         private bool colision;
         private IActor actor;
         private int dx, locationNumber, step;
         private int safePositionX, safePositionY;
-        private int jumpHigh = 30;
+        private int jumpHigh = 40;
 
         public Jump(IActor movable, int step, int dx, int locationNumber )
         {

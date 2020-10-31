@@ -35,7 +35,7 @@ namespace Merlin.Actors
             SetAnimation(animationOff);
             animationOff.Start();
             animationOn.Start();
-            SetPosition(100, 150);
+            
 
             //SetAnimation(animationOff);
             moreObservers = new List<IObserver>();
@@ -71,7 +71,7 @@ namespace Merlin.Actors
         protected override void UpdateAnimation()
         {
             if (this.IsOn())
-            {                
+            {
                 SetAnimation(animationOn);
                 animationOn.Start();
             }
@@ -80,30 +80,8 @@ namespace Merlin.Actors
                 SetAnimation(animationOff);
                 animationOff.Start();
             }
-            
+
         }
-        /*
-public bool IsOn()
-{
-   return isOn;
-}
-
-
-public void Toggle()
-{
-   if (isOn)
-   {
-       TurnOff();
-       //SetAnimation(animationOff);
-   }
-   else
-   {
-       TurnOn();
-       //  SetAnimation(animationOn);
-   }
-   //isOn = !isOn;
-}*/
-
 
     }
 

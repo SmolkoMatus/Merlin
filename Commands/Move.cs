@@ -9,6 +9,7 @@ using System.Windows.Input;
 
 namespace Merlin.Commands
 {
+
     public class Move : Command
     {
         private IActor actor;

@@ -45,7 +45,6 @@ namespace Merlin.Actors
         {
             
         }
-
         protected abstract void UpdateAnimation();
     }
 }

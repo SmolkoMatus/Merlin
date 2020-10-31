@@ -4,6 +4,7 @@ using Merlin2d.Game.Actions;
 using Merlin2d.Game.Actors;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -11,12 +12,13 @@ namespace Merlin.Actors
 {
     public class Player : AbstractActor, IMovable
     {
-        Animation animation_MerlinWalking = new Animation("resources/player.png", 64, 58);
+        Animation animationMerlinWalking = new Animation("resources/player.png", 64, 58);
         Command moveLeft;
         Command moveRight;
-        //Command moveUp;
         Command moveDown;
-        int counterHop = 1;
+        private int counterHop = 2;
+        private bool jumpAvaiable = true;
+        private int currentHop = 0;
        
         //int playerX;
         //int playerY;
@@ -24,86 +26,75 @@ namespace Merlin.Actors
 
         public Player()
         {
-            animation_MerlinWalking.Start();
-            SetAnimation(animation_MerlinWalking);
-            SetPosition(250, 200);           
+            animationMerlinWalking.Start();
+            SetAnimation(animationMerlinWalking);                   
         }
-
         public override void Update()
         {
             moveLeft = new Move(this, 1, -1, 0);
             moveRight = new Move(this, 1, 1, 0);
             new Jump(this, 3, 10, -7);
             moveDown = new Move(this, 1, 0, 1);
+            animationMerlinWalking.Start();
 
             if (Input.GetInstance().IsKeyDown(Input.Key.LEFT) == true)
-            {
-                animation_MerlinWalking.Start();
-                if (Input.GetInstance().IsKeyDown(Input.Key.SPACE) == true)
+            {                
+                if ((Input.GetInstance().IsKeyPressed(Input.Key.SPACE) == true) && (counterHop-- > 0))
                 {
-                    moveLeft.Execute();
-                    new Jump(this, 3, 10, -1).Execute();
+                    if (jumpAvaiable && currentHop <= 2) 
+                    {
+                        moveLeft.Execute();
+                        new Jump(this, 3, 10, -1).Execute();
+                        currentHop++;
+                    }
+                    if(currentHop >= 2)
+                    {
+                        jumpAvaiable = false;
+                    }
                 }
                 else
-                {
+                {                                      
+                    jumpAvaiable = true;
+                    counterHop = 2;                    
                     moveLeft.Execute();
                 }
             }
             else if (Input.GetInstance().IsKeyDown(Input.Key.RIGHT) == true)
             {
-                animation_MerlinWalking.Start();
-                if (Input.GetInstance().IsKeyPressed(Input.Key.SPACE) == true)
+                if ((Input.GetInstance().IsKeyPressed(Input.Key.SPACE) == true) && (counterHop-- > 0))
                 {
-                    moveRight.Execute();
-                    new Jump(this, 3, 10, 1).Execute();
-                }                
+                    if (jumpAvaiable && currentHop < 2)
+                    {
+                        moveRight.Execute();
+                        new Jump(this, 3, 10, 1).Execute();
+                        currentHop++;
+                    } 
+                    if(currentHop >= 2)
+                    {
+                        jumpAvaiable = false;
+                    }
+                }
                 else
-                {
-                    moveRight.Execute();
+                {   
+                    jumpAvaiable = true;
+                    counterHop = 2;
+                    moveRight.Execute();                   
                 }
             }
-           else if ((Input.GetInstance().IsKeyDown(Input.Key.SPACE) == true) )
+           else if ((Input.GetInstance().IsKeyDown(Input.Key.SPACE) == true) && (counterHop-- > 0))
             {
-                animation_MerlinWalking.Start();
-                new Jump(this, 3, 0, 0).Execute();
-                
+                new Jump(this, 3, 0, 0).Execute();               
             }
-           /* else if ((Input.GetInstance().IsKeyDown(Input.Key.D) == true) )
-            {
-                animation_MerlinWalking.Start();
-                new Jump(this, 3, 10, 1).Execute();
-                moveLeft.Execute();
-            }
-            else if ((Input.GetInstance().IsKeyDown(Input.Key.A) == true) )
-            {
-                animation_MerlinWalking.Start();
-                new Jump(this, 3, 10, -1).Execute();
-                moveRight.Execute();
-            }*/
+
             else if (Input.GetInstance().IsKeyDown(Input.Key.DOWN) == true)
             {
-                animation_MerlinWalking.Start();
                 moveDown.Execute();
             }
             else
             {
-                animation_MerlinWalking.Stop();
+                currentHop = 0;
+                animationMerlinWalking.Stop();
             }            
-        }
-        public int PlayerCoordinatX
-        {
-            get
-            {
-                return GetX();
-            }
-        }
-
-        public int PlayerCoordinatY
-        {
-            get
-            {
-                return GetY(); 
-            }
         }
     }
 }

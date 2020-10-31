@@ -10,6 +10,7 @@ namespace Merlin.Commands
        
         public void Execute(T t)
         {
+
            if (t.IsAffectedByPhysics())
             {
                 Move move = new Move(t, 1, 0, 1);

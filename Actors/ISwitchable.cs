@@ -13,5 +13,6 @@ namespace Merlin.Actors
         void TurnOff();
 
         bool IsOn();
+
     }
 }

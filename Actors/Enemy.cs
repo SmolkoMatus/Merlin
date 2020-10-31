@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
 
+
 namespace Merlin.Actors
 {
     public class Enemy : AbstractActor
@@ -21,14 +22,13 @@ namespace Merlin.Actors
         private IActor player;
         private int counter = 0;
         private int rnd, xEnemy, yEnemy;
-        Random random = new Random();
+        private Random random = new Random();
 
         public Enemy(IActor player)
         {
             animationEnemy = new Animation("resources/enemy.png", 64, 58);
             SetAnimation(animationEnemy);
-            animationEnemy.Start();
-            SetPosition(250, 120);           
+            animationEnemy.Start();        
             //followPlayer = new Move(this, 1, , 0);
             this.player = player;
             //move = new Move(this,1,xEnemy,0);
@@ -41,7 +41,7 @@ namespace Merlin.Actors
             xEnemy = GetX();
             yEnemy = GetY();
 
-            if ((SeeNumber(positionPlayerX, xEnemy, positionPlayerY, yEnemy) <= followNumber) && (counter % 30 == 0))
+            if ((SeeNumber(positionPlayerX, xEnemy) <= followNumber) && (counter % 30 == 0) && (Math.Abs(positionPlayerY - yEnemy) <= followNumber))
             {
                 new Move(this, 1, Follow(positionPlayerX, xEnemy, positionPlayerY, yEnemy), 0).Execute();
                 Console.WriteLine("Enemy see player!");
@@ -54,19 +54,18 @@ namespace Merlin.Actors
                     new Move(this, 1, rnd, 0).Execute();
                 }
             }
-            if(positionPlayerX == this.GetX())
+            if((Math.Abs(positionPlayerX-xEnemy) <= 20)  && (Math.Abs(positionPlayerY - yEnemy) <= followNumber))
             {
                 Console.WriteLine("Merlin is caught!");
             }
             counter++;
         }
-
-        private int SeeNumber(int xP, int xE, int yP, int yE)
+        private int SeeNumber(int xP, int xE)
         {
-            int finalNumber,dimenseFirst,dimenseSecond;
+            int finalNumber,dimenseFirst;
 
             dimenseFirst = xP - xE;
-            dimenseSecond = yP - yE;
+            
 
             if(dimenseFirst <= 0)
             {
@@ -81,15 +80,15 @@ namespace Merlin.Actors
                   
         private int Follow(int xP, int xE, int yP, int yE)
         {
-            int finalNumber, left, right , up, down;
+            int finalNumber;
 
            if(xP - xE >= 0)
             {
-                finalNumber = 3;
+                finalNumber = 5;
             }
             else
             {
-                finalNumber = -3;
+                finalNumber = -5;
             }
             return finalNumber;
         }

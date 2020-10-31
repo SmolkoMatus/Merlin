@@ -8,5 +8,4 @@ namespace Merlin.Actors
     {
         //what????? nothing HERE!
     }
-
 }

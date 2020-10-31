@@ -11,9 +11,6 @@ namespace Merlin.Actors
     {
         private Animation animationOn;
         private Animation animationOff;
-
-        //private int counter = 0;
-        //private bool isOn = false;
         private bool isPowered = false;
         private PowerSource powerSource;
         
@@ -25,19 +22,16 @@ namespace Merlin.Actors
             SetAnimation(animationOff); 
             animationOff.Start();
             animationOn.Start();
-            SetPosition(100, 100);
-
-            
+           
              if(powerSource != null)
              {
-                powerSource.Subscribe(this); // problem prekonzultovat vypis 2 observerov ?
+                powerSource.Subscribe(this);
                 
                 isPowered = powerSource.IsOn();
                 this.powerSource = powerSource;
              }
 
         }
-
         public void Notify(bool state)
         {
             isPowered = state;
@@ -47,9 +41,15 @@ namespace Merlin.Actors
         
         public override void Update()
         {
-             Toggle();           
-        }
-        
+            if (isPowered)
+            {
+                TurnOn();
+            }
+            else
+            {
+                TurnOff();
+            }              
+        }       
         protected override void UpdateAnimation()
         {
             if (isPowered && IsOn())
@@ -61,54 +61,5 @@ namespace Merlin.Actors
                 SetAnimation(animationOff);
             }
         }
-
-
-        /*
-        public void Toggle()
-        {
-            if (isOn)
-            {
-                TurnOff();
-                //SetAnimation(animationOff);
-            }
-            else
-            {
-                TurnOn();
-                //  SetAnimation(animationOn);
-            }
-            //isOn = !isOn;
-        }*/
-        /*
-        public void TurnOff()
-        {
-            isOn = false;
-            UpdateAnimation();
-        }
-
-        public void TurnOn()
-        {
-            isOn = true;
-            UpdateAnimation();
-        }*/
-        /*
-        private void UpdateAnimation()
-        {
-            if(isPowered && isOn)
-            {
-                SetAnimation(animationOn);
-            }
-            else
-            {
-                SetAnimation(animationOff);
-            }
-        }*/
-
-        /*
-        public bool IsOn()
-        {
-            return isOn;
-        }
-        */
-
     }
 }
