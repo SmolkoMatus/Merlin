@@ -9,12 +9,12 @@ namespace Merlin.Actors
     {
         private int remainingUses;
      
-        public CrackedCrystal(PowerSource source) : base(source)
+        public CrackedCrystal(PowerSource source) : this(source,3)
         {
            
            
         }
-        public CrackedCrystal(PowerSource source, int remainingUses) : this(source , 3)
+        public CrackedCrystal(PowerSource source, int remainingUses) : base(source)
         {
             this.remainingUses = remainingUses;                
         }

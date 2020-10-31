@@ -41,14 +41,7 @@ namespace Merlin.Actors
         
         public override void Update()
         {
-            if (isPowered)
-            {
-                TurnOn();
-            }
-            else
-            {
-                TurnOff();
-            }              
+            Update();
         }       
         protected override void UpdateAnimation()
         {

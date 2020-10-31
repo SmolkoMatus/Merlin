@@ -13,6 +13,7 @@ namespace Merlin.Actors
     public class Player : AbstractActor, IMovable
     {
         Animation animationMerlinWalking = new Animation("resources/player.png", 64, 58);
+
         Command moveLeft;
         Command moveRight;
         Command moveDown;
@@ -20,10 +21,6 @@ namespace Merlin.Actors
         private bool jumpAvaiable = true;
         private int currentHop = 0;
        
-        //int playerX;
-        //int playerY;
-        // bool colision = false;
-
         public Player()
         {
             animationMerlinWalking.Start();
