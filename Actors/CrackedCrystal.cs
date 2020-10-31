@@ -9,7 +9,7 @@ namespace Merlin.Actors
     {
         private int remainingUses;
      
-        public CrackedCrystal(PowerSource source) : this(source,3)
+        public CrackedCrystal(PowerSource source) : this(source,100)
         {
            
            
@@ -23,7 +23,7 @@ namespace Merlin.Actors
         { 
            if(remainingUses > 0)
            {
-                base.TurnOn();
+                base.TurnOn();             
                 Console.Write("remainingUses"); Console.WriteLine(remainingUses);
            }
             remainingUses--;

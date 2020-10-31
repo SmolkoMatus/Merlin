@@ -2,6 +2,7 @@
 using Merlin2d.Game.Actors;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.IO;
 using System.Text;
 
@@ -13,6 +14,7 @@ namespace Merlin.Actors
         private Animation animationOff;
         private bool isPowered = false;
         private PowerSource powerSource;
+  
         
         public Crystal(PowerSource powerSource)
         {
@@ -41,7 +43,14 @@ namespace Merlin.Actors
         
         public override void Update()
         {
-            Update();
+            if (isPowered)
+            {
+                TurnOn();
+            }
+            else
+            {
+                TurnOff();
+            }
         }       
         protected override void UpdateAnimation()
         {
