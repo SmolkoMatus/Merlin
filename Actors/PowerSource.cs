@@ -11,18 +11,15 @@ namespace Merlin.Actors
     {
         private Animation animationOn;
         private Animation animationOff;
-        //private int counter = 0;
         private List<IObserver> moreObservers = new List<IObserver>();
 
         public void Subscribe(IObserver observer)
-        {
-            //this.observer = observer;
+        {       
             this.moreObservers.Add(observer);
         }
 
         public void Unsubscribe(IObserver observer)
-        {
-            //this.observer = observer;
+        {         
             this.moreObservers.Remove(observer);
         }
 
@@ -36,15 +33,8 @@ namespace Merlin.Actors
             animationOff.Start();
             animationOn.Start();
             
-
-            //SetAnimation(animationOff);
             moreObservers = new List<IObserver>();
 
-            /*foreach (IObserver observer in this.moreObservers)
-            {
-                observer.Notify(IsOn());
-                Console.WriteLine("I am here!");
-            }*/
         }
 
         public new void Toggle()
@@ -53,7 +43,7 @@ namespace Merlin.Actors
 
             foreach (IObserver observer in this.moreObservers)
             {
-                observer.Notify(IsOn());
+                observer.Notify(this.IsOn());
                 Console.WriteLine("I am here!");
             }
         }
@@ -64,7 +54,6 @@ namespace Merlin.Actors
             {
                 this.Toggle();
                 Console.WriteLine("Pressed key => Change!");
-
             }
         }
 

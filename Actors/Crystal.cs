@@ -13,9 +13,12 @@ namespace Merlin.Actors
         private Animation animationOn;
         private Animation animationOff;
         private bool isPowered = false;
+        private bool wasPoweredBefore = false;
         private PowerSource powerSource;
-  
         
+        private List<bool> isPoweredBefore = new List<bool>();
+
+
         public Crystal(PowerSource powerSource)
         {
             animationOff = new Animation("resources/crystal_off.png",28,32);
@@ -24,33 +27,37 @@ namespace Merlin.Actors
             SetAnimation(animationOff); 
             animationOff.Start();
             animationOn.Start();
-           
-             if(powerSource != null)
+            
+             if (powerSource != null)
              {
                 powerSource.Subscribe(this);
                 
                 isPowered = powerSource.IsOn();
                 this.powerSource = powerSource;
              }
-
+            
         }
         public void Notify(bool state)
         {
             isPowered = state;
             Console.WriteLine("Notify from notife!");
+            //isPoweredBefore = true;
             UpdateAnimation();                  
         }
         
         public override void Update()
-        {
+        {            
             if (isPowered)
             {
                 TurnOn();
+                wasPoweredBefore = true;
             }
             else
             {
                 TurnOff();
+                wasPoweredBefore = false;
             }
+            //Toggle();
         }       
         protected override void UpdateAnimation()
         {
@@ -63,5 +70,11 @@ namespace Merlin.Actors
                 SetAnimation(animationOff);
             }
         }
+
+        public  bool WasPoweredBefore()
+        {
+            return wasPoweredBefore;
+        }
+
     }
 }
