@@ -6,8 +6,7 @@ using System.Text;
 namespace Merlin.Commands
 {
      public class Fall<T> : IAction<T> where T : IActor
-     {
-       
+     {      
         public void Execute(T t)
         {
 

@@ -24,8 +24,7 @@ namespace Merlin.Commands
             actors = world.GetActors().Where(x => x.IsAffectedByPhysics()).ToList();
             actors.ForEach(x => fall.Execute((AbstractActor)x));
 
-        }
-        
+        }      
         public void SetWorld(IWorld world)
         {
             this.world = world;        

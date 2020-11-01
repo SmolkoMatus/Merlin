@@ -69,7 +69,7 @@ namespace Merlin.Actors
             counter++;           
             if (counter % 60 == 0)
             {                
-                Console.Write("CounterLog:");Console.WriteLine(counterLog.ToString());               
+                //Console.Write("CounterLog:");Console.WriteLine(counterLog.ToString());               
                 kettle.IncreaseTemperature(counterLog);                                
             }
         }       

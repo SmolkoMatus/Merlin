@@ -32,7 +32,6 @@ namespace Merlin.Commands
 
         public void Execute()
         {
-            //actor.SetPosition(actor.GetX() + dx * step, actor.GetY() + dy);
             safePositionX = actor.GetX();
             safePositionY = actor.GetY();
             actor.SetPosition(safePositionX + dx * step, safePositionY + dy);
@@ -40,7 +39,6 @@ namespace Merlin.Commands
             {
                 actor.SetPosition(safePositionX, safePositionY);             
             }
-
         }
         
         private  bool Colision()

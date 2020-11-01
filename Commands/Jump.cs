@@ -26,7 +26,6 @@ namespace Merlin.Commands
             this.step = step;
             this.locationNumber = locationNumber;
         }
-
         public void Execute()
         {
             safePositionX = actor.GetX();

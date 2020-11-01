@@ -7,5 +7,6 @@ namespace Merlin.Actors
     public interface IMovable
     {
         //what????? nothing HERE!
+
     }
 }

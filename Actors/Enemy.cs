@@ -12,9 +12,6 @@ namespace Merlin.Actors
 {
     public class Enemy : AbstractActor
     {
-        //Command walking;
-        //Command followPlayer;
-
         private Animation animationEnemy;
         private int followNumber = 70;
         private int positionPlayerX;

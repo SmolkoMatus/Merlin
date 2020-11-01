@@ -24,7 +24,7 @@ namespace Merlin.Actors
             if (remainingUses > 0 && !base.WasPoweredBefore())
             {
                 base.TurnOn();             
-                Console.Write("remainingUses"); Console.WriteLine(remainingUses);
+               // Console.Write("remainingUses"); Console.WriteLine(remainingUses);
                 remainingUses--;
             }
             

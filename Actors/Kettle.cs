@@ -58,7 +58,6 @@ namespace Merlin.Actors
                 {
                     SetAnimation(animation_kettle_cold);
                     animation_kettle_cold.Start();
-
                 }
             }
             if (GetTemperature() > 60)

@@ -23,18 +23,14 @@ namespace Merlin.Actors
             this.moreObservers.Remove(observer);
         }
 
-  
         public PowerSource()
         {
             animationOff = new Animation("resources/source_off.png", 64, 23);
             animationOn = new Animation("resources/source_on.png", 64, 23);
-
             SetAnimation(animationOff);
             animationOff.Start();
             animationOn.Start();
-            
             moreObservers = new List<IObserver>();
-
         }
 
         public new void Toggle()
@@ -44,7 +40,7 @@ namespace Merlin.Actors
             foreach (IObserver observer in this.moreObservers)
             {
                 observer.Notify(this.IsOn());
-                Console.WriteLine("I am here!");
+                //Console.WriteLine("I am here!");
             }
         }
 
@@ -53,7 +49,7 @@ namespace Merlin.Actors
             if (Input.GetInstance().IsKeyPressed(Input.Key.E))
             {
                 this.Toggle();
-                Console.WriteLine("Pressed key => Change!");
+                //Console.WriteLine("Pressed key => Change!");
             }
         }
 

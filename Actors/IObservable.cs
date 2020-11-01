@@ -9,7 +9,6 @@ namespace Merlin.Actors
         void Subscribe(IObserver observer);
 
         void Unsubscribe(IObserver observer);
-
     }
     //co chceme sledovat powerSource 
 }

@@ -16,9 +16,6 @@ namespace Merlin.Actors
         private bool wasPoweredBefore = false;
         private PowerSource powerSource;
         
-        private List<bool> isPoweredBefore = new List<bool>();
-
-
         public Crystal(PowerSource powerSource)
         {
             animationOff = new Animation("resources/crystal_off.png",28,32);
@@ -40,8 +37,8 @@ namespace Merlin.Actors
         public void Notify(bool state)
         {
             isPowered = state;
-            Console.WriteLine("Notify from notife!");
-            //isPoweredBefore = true;
+           // Console.WriteLine("Notify from notife!");
+
             UpdateAnimation();                  
         }
         
